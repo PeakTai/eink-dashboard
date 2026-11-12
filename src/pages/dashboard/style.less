@@ -1,0 +1,245 @@
+.dashboard-page {
+  /* 不用 inset 简写：部分墨水屏阅读器的 WebView 版本较旧，不支持 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  color: #000;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow: hidden;
+
+  /*
+   * 以 7 寸阅读器分辨率 1264×1680 为设计稿基准排版，
+   * 由 JS 计算 --dash-x / --dash-y / --dash-scale 后整体等比缩放并居中。
+   */
+  .dash-stage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1264px;
+    height: 1680px;
+    box-sizing: border-box;
+    padding: 25px 63px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    transform-origin: 0 0;
+    transform: translate(var(--dash-x, 0px), var(--dash-y, 0px)) scale(var(--dash-scale, 1));
+  }
+
+  .dash-date {
+    font-size: 74px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .dash-lunar {
+    display: block;
+    font-size: 0.72em;
+    margin-top: 6px;
+  }
+
+  .dash-time {
+    font-size: 240px;
+    font-weight: bold;
+    line-height: 1.1;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .dash-divider {
+    border-top: 3px solid #000;
+    margin: 14px 0;
+  }
+
+  /* 不依赖 flex gap：老版本 WebView 不支持，用 margin 实现间距 */
+  .dash-current {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dash-current-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 110px;
+  }
+
+  .dash-current-icon {
+    font-size: 218px;
+    margin-bottom: 17px;
+  }
+
+  .dash-current-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dash-current-main {
+    display: flex;
+    align-items: baseline;
+    white-space: nowrap;
+  }
+
+  .dash-temp {
+    font-size: 88px;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+    margin-right: 25px;
+  }
+
+  .dash-condition {
+    font-size: 88px;
+  }
+
+  .dash-highlow {
+    font-size: 40px;
+    margin-top: 8px;
+  }
+
+  .dash-aqi {
+    font-size: 40px;
+    margin-top: 8px;
+    white-space: nowrap;
+  }
+
+  .dash-weather-empty {
+    width: 100%;
+    text-align: center;
+    font-size: 76px;
+  }
+
+  .dash-rain {
+    margin-top: 10px;
+  }
+
+  .dash-rain-title {
+    font-size: 34px;
+  }
+
+  .dash-rain-bars {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+
+  .dash-rain-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dash-rain-value {
+    font-size: 30px;
+  }
+
+  .dash-rain-bar-wrap {
+    display: flex;
+    align-items: flex-end;
+    height: 70px;
+    margin: 6px 0;
+  }
+
+  .dash-rain-bar {
+    width: 56px;
+    min-height: 4px;
+    background: #000;
+  }
+
+  .dash-rain-hour {
+    font-size: 30px;
+  }
+
+  .dash-forecast {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .dash-forecast-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dash-forecast-item > * + * {
+    margin-top: 22px;
+  }
+
+  .dash-forecast-weekday {
+    font-size: 57px;
+  }
+
+  .dash-forecast-icon {
+    font-size: 84px;
+  }
+
+  .dash-metrics,
+  .dash-tips {
+    font-size: 40px;
+    text-align: left;
+    margin-top: 8px;
+    white-space: nowrap;
+  }
+
+  .dash-metric-row + .dash-metric-row {
+    margin-top: 8px;
+  }
+
+  .dash-forecast-temp {
+    font-size: 57px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .dash-footer-space {
+    flex: 1;
+  }
+
+  .dash-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .dash-updated {
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+  }
+
+  .dash-updated .dash-refresh-icon {
+    font-size: 52px;
+    margin-left: 24px;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .dash-footer-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .dash-battery {
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+    font-variant-numeric: tabular-nums;
+    margin-right: 25px;
+  }
+
+  .dash-battery > i {
+    margin-right: 20px;
+  }
+
+  .dash-settings-icon {
+    font-size: 76px;
+    padding: 17px;
+    cursor: pointer;
+  }
+}
